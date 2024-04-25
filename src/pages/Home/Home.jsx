@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import "./Home.css";
 import Banner from "./Banner/Banner.jsx";
 import { MovieContext } from "../../context/MovieContext.js";
@@ -7,27 +7,35 @@ import Slider from "../../components/Slider/Slider.jsx";
 
 function Home() {
   const {
-    movies: [firstMovie, ...restMovies],
+    popularMovies: [firstPopularMovie, ...restPopularMovies],
+    upcomingMovies,
+    topRatedMovies,
     isLoading,
   } = useContext(MovieContext);
-  console.log(firstMovie, restMovies);
+
+  console.log("slider upcoming movies:", upcomingMovies);
+
   return (
     <main className="main">
       {isLoading ? (
-        <Grid
-          visible={true}
-          height="80"
-          width="80"
-          color="#ff1919"
-          ariaLabel="grid-loading"
-          radius="12.5"
-          wrapperStyle={{}}
-          wrapperClass="grid-wrapper"
-        />
+        <span className="loader">
+          <Grid
+            visible={true}
+            height="80"
+            width="80"
+            color="#ff1919"
+            ariaLabel="grid-loading"
+            radius="12.5"
+            wrapperStyle={{}}
+            wrapperClass="grid-wrapper"
+          />
+        </span>
       ) : (
         <div>
-          <Banner movie={firstMovie} />
-          <Slider movies={restMovies} title="Popular" />
+          <Banner movie={firstPopularMovie} />
+          <Slider movies={restPopularMovies} title="Popular" />
+          <Slider movies={upcomingMovies} title="Upcoming" />
+          <Slider movies={topRatedMovies} title="Top Rated" />
         </div>
       )}
     </main>

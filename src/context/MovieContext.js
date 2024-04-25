@@ -5,20 +5,31 @@ export const MovieContext = createContext();
 
 export const MovieProvider = function ({ children }) {
   const [movies, setMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [recommendations, setRecommendations] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchPopularMovies = async function () {
+  const fetchMovies = async function (type) {
     try {
       setIsLoading(true);
-      const data = await fetchDataFromApi("/movie/popular");
+      const data = await fetchDataFromApi(`/movie/${type}`);
       setMovies(data.results);
       setIsLoading(false);
+
+      if (type === "popular") setPopularMovies(data.results);
+      else if (type === "upcoming") setUpcomingMovies(data.results);
+      else if (type === "top_rated") setTopRatedMovies(data.results);
+      else setMovies(data.results);
+
+      // return data.results;
     } catch (error) {
       setError(error.message);
       setIsLoading(false);
+      // return error;
     }
   };
 
@@ -35,17 +46,27 @@ export const MovieProvider = function ({ children }) {
   };
 
   useEffect(() => {
-    fetchPopularMovies();
+    // const popularMovies = fetchMovies("popular");
+    // setMovies(popularMovies);
+    fetchMovies("popular");
+    fetchMovies("upcoming");
+    fetchMovies("top_rated");
   }, []);
 
   const value = {
     movies,
+    popularMovies,
+    topRatedMovies,
+    upcomingMovies,
     selectedMovie,
+    setSelectedMovie,
     recommendations,
+    setRecommendations,
     isLoading,
     error,
     searchMovies,
-    fetchPopularMovies,
+    fetchMovies,
+    // fetchPopularMovies,
   };
 
   return (

@@ -40,7 +40,7 @@ function Slider({ movies, title }) {
       <h2 className="carousel__title">{title}</h2>
 
       <Carousel responsive={responsive}>
-        {movies.map(({ poster_path, id, title, overview }) => (
+        {movies?.map(({ poster_path, id, title, overview }) => (
           <SliderCard
             key={id}
             poster={poster_path}
