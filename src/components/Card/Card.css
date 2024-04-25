@@ -1,35 +1,35 @@
-.slider-card__link:link,
-.slider-card__link:visited {
+.card__link:link,
+.card__link:visited {
   text-decoration: none;
   color: var(--text);
   font: inherit;
 }
 
-.slider-card__link:hover .silder-card__info-container,
-.slider-card__link:active .silder-card__info-container {
+.card__link:hover .card__info-container,
+.card__link:active .card__info-container {
   bottom: 0;
   opacity: 1;
 }
 
-.slider-card {
+.card {
   aspect-ratio: 2/3;
   max-width: 30rem;
   width: 100%;
   position: relative;
 }
 
-.slider-card__img-container {
+.card__img-container {
   height: 100%;
   width: 100%;
 }
 
-.slider-card__img {
+.card__img {
   height: 100%;
   width: 100%;
   object-fit: cover;
 }
 
-.silder-card__info-container {
+.card__info-container {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
   position: absolute;
   width: 100%;
@@ -39,7 +39,7 @@
   transition: all 0.3s ease-out;
 }
 
-.slider-card__info {
+.card__info {
   position: absolute;
   bottom: 0;
   left: 0;

@@ -15,7 +15,7 @@ function Banner({ movie }) {
       <div className="banner__info-container">
         <h1 className="banner__title">{movie?.title}</h1>
         <p className="banner__overview">{movie?.overview}</p>
-        <Link className="banner__btn" to={`/movie/${movie?.id}`}>
+        <Link className="primary__btn" to={`/movie/${movie?.id}`}>
           More &#x27F6;
         </Link>
       </div>

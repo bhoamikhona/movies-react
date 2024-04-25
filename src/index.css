@@ -25,6 +25,44 @@ body {
   font-family: var(--font);
   color: var(--text);
   background-color: var(--background);
+
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.primary__btn:link,
+.primary__btn:visited {
+  background-color: var(--red);
+  color: var(--text);
+  text-decoration: none;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-out;
+}
+
+.primary__btn:hover,
+.primary__btn:active {
+  cursor: pointer;
+  background-color: #cc1414;
+}
+
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+  z-index: 100;
+
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 76.8em) {

@@ -17,13 +17,11 @@ export const MovieProvider = function ({ children }) {
     try {
       setIsLoading(true);
       const data = await fetchDataFromApi(`/movie/${type}`);
-      setMovies(data.results);
       setIsLoading(false);
 
       if (type === "popular") setPopularMovies(data.results);
       else if (type === "upcoming") setUpcomingMovies(data.results);
       else if (type === "top_rated") setTopRatedMovies(data.results);
-      else setMovies(data.results);
 
       // return data.results;
     } catch (error) {
@@ -46,8 +44,6 @@ export const MovieProvider = function ({ children }) {
   };
 
   useEffect(() => {
-    // const popularMovies = fetchMovies("popular");
-    // setMovies(popularMovies);
     fetchMovies("popular");
     fetchMovies("upcoming");
     fetchMovies("top_rated");
@@ -66,7 +62,6 @@ export const MovieProvider = function ({ children }) {
     error,
     searchMovies,
     fetchMovies,
-    // fetchPopularMovies,
   };
 
   return (

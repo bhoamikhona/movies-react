@@ -1,0 +1,28 @@
+.no-results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.no-results__img-container {
+  height: 30rem;
+}
+
+.no-results__img {
+  height: 100%;
+}
+
+.no-results__info-container {
+  max-width: 40rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+}

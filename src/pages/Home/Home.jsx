@@ -13,8 +13,6 @@ function Home() {
     isLoading,
   } = useContext(MovieContext);
 
-  console.log("slider upcoming movies:", upcomingMovies);
-
   return (
     <main className="main">
       {isLoading ? (

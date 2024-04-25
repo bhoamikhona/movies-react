@@ -1,0 +1,19 @@
+.search__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  padding: 12rem 9rem;
+}
+
+.search__title {
+  margin-bottom: 6rem;
+}
+
+.search__cards-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  gap: 4rem;
+}

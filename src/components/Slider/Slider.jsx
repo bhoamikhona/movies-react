@@ -2,11 +2,9 @@ import React from "react";
 import "./Slider.css";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
-import SliderCard from "./SliderCard/SliderCard.jsx";
+import Card from "../Card/Card.jsx";
 
 function Slider({ movies, title }) {
-  console.log("slider:", movies);
-
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -41,7 +39,7 @@ function Slider({ movies, title }) {
 
       <Carousel responsive={responsive}>
         {movies?.map(({ poster_path, id, title, overview }) => (
-          <SliderCard
+          <Card
             key={id}
             poster={poster_path}
             id={id}
