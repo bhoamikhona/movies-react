@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
 import "./App.css";
-import { fetchDataFromApi } from "./utils/api.js";
-import { useSelector, useDispatch } from "react-redux";
-import { getApiConfiguration } from "./store/homeSlice.js";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home/Home.jsx";
+import Details from "./pages/Details/Details.jsx";
+import NotFound from "./pages/NotFound/NotFound.jsx";
+import Header from "./components/Header/Header.jsx";
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
-  const dispatch = useDispatch();
-  const { url } = useSelector((state) => state.home);
-
-  const apiTesting = function () {
-    fetchDataFromApi("/movie/popular").then((res) => {
-      console.log(res);
-      dispatch(getApiConfiguration(res));
-    });
-  };
-
-  useEffect(() => {
-    apiTesting();
-  }, []);
-
-  return <div className="app">{url?.total_pages}</div>;
+  return (
+    <div className="app">
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:mediaType/:id" element={<Details />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </div>
+  );
 }
 
 export default App;
