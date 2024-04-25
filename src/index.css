@@ -26,3 +26,15 @@ body {
   color: var(--text);
   background-color: var(--background);
 }
+
+@media (max-width: 76.8em) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media (max-width: 37.5em) {
+  html {
+    font-size: 50%;
+  }
+}
