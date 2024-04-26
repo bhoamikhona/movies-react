@@ -35,7 +35,7 @@ function Header() {
             <input
               className="header__form-input"
               type="text"
-              placeholder="Search..."
+              placeholder="Search a movie..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />

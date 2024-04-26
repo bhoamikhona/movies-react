@@ -61,6 +61,7 @@ export const MovieProvider = function ({ children }) {
       const simi = await fetchDataFromApi(
         `/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
       );
+
       setSelectedMovie(data);
       setMovieCredits(credits);
       setRecommendations(recommends.results);

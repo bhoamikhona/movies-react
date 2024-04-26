@@ -62,6 +62,24 @@
   max-width: 50rem;
 }
 
+@media (max-width: 76.8em) {
+  .banner__title {
+    font-size: 4rem;
+  }
+}
+
+@media (max-width: 56.25em) {
+  .banner__info-container {
+    /* left: 3rem;
+    bottom: 3rem; */
+    bottom: 3rem;
+  }
+
+  .banner__title {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 37.5em) {
   .banner__info-container {
     left: 2rem;
@@ -69,5 +87,9 @@
 
     font-size: 1.4rem;
     gap: 1rem;
+  }
+
+  .banner__title {
+    font-size: 2rem;
   }
 }
