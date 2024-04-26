@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 function Banner({ movie }) {
   // const { backdrop_path, id, title, overview } = movie;
+
+  if (!movie || movie.length === 0) {
+    return null;
+  }
+
   return (
     <div className="banner">
       <div className="banner__img-container">

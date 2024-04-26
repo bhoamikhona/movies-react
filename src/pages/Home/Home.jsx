@@ -1,6 +1,6 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import "./Home.css";
-import Banner from "./Banner/Banner.jsx";
+import Banner from "../../components/Banner/Banner.jsx";
 import { MovieContext } from "../../context/MovieContext.js";
 import { Grid } from "react-loader-spinner";
 import Slider from "../../components/Slider/Slider.jsx";
@@ -11,6 +11,7 @@ function Home() {
     upcomingMovies,
     topRatedMovies,
     isLoading,
+    error,
   } = useContext(MovieContext);
 
   return (

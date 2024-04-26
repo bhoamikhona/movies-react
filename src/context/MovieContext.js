@@ -9,25 +9,25 @@ export const MovieProvider = function ({ children }) {
   const [upcomingMovies, setUpcomingMovies] = useState([]);
   const [topRatedMovies, setTopRatedMovies] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [movieCredits, setMovieCredits] = useState([]);
   const [recommendations, setRecommendations] = useState([]);
+  const [similar, setSimilar] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(false);
 
   const fetchMovies = async function (type) {
     try {
       setIsLoading(true);
       const data = await fetchDataFromApi(`/movie/${type}`);
-      setIsLoading(false);
 
       if (type === "popular") setPopularMovies(data.results);
       else if (type === "upcoming") setUpcomingMovies(data.results);
       else if (type === "top_rated") setTopRatedMovies(data.results);
-
-      // return data.results;
     } catch (error) {
-      setError(error.message);
+      setError(true);
+      console.log(error);
+    } finally {
       setIsLoading(false);
-      // return error;
     }
   };
 
@@ -36,9 +36,39 @@ export const MovieProvider = function ({ children }) {
       setIsLoading(true);
       const data = await fetchDataFromApi("/search/movie", { query });
       setMovies(data.results);
-      setIsLoading(false);
     } catch (error) {
-      setError(error.message);
+      setError(true);
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchMovieData = async function (id) {
+    try {
+      setIsLoading(true);
+      const data = await fetchDataFromApi(
+        `/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      const credits = await fetchDataFromApi(
+        `/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+
+      const recommends = await fetchDataFromApi(
+        `/movie/${id}/recommendations?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+
+      const simi = await fetchDataFromApi(
+        `/movie/${id}/similar?api_key=${process.env.REACT_APP_API_KEY}`
+      );
+      setSelectedMovie(data);
+      setMovieCredits(credits);
+      setRecommendations(recommends.results);
+      setSimilar(simi.results);
+    } catch (error) {
+      setError(true);
+      console.log(error);
+    } finally {
       setIsLoading(false);
     }
   };
@@ -57,11 +87,13 @@ export const MovieProvider = function ({ children }) {
     selectedMovie,
     setSelectedMovie,
     recommendations,
-    setRecommendations,
+    similar,
     isLoading,
     error,
     searchMovies,
     fetchMovies,
+    fetchMovieData,
+    movieCredits,
   };
 
   return (

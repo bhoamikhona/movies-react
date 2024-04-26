@@ -34,6 +34,7 @@ body {
   justify-content: space-between;
 }
 
+.primary__btn,
 .primary__btn:link,
 .primary__btn:visited {
   background-color: var(--red);
@@ -42,8 +43,11 @@ body {
   padding: 1rem 2rem;
   border-radius: 0.5rem;
   transition: all 0.3s ease-out;
+  outline: none;
+  border: none;
 }
 
+.primary__btn,
 .primary__btn:hover,
 .primary__btn:active {
   cursor: pointer;

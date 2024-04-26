@@ -1,0 +1,34 @@
+.cast__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cast__img-container {
+  max-width: 10rem;
+  aspect-ratio: 1/1;
+
+  border-radius: 100%;
+  overflow: hidden;
+}
+
+.cast__img {
+  width: 100%;
+}
+
+.cast__info-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cast__name {
+  font-weight: 500;
+}
+
+.cast__character {
+  font-weight: 200;
+}
